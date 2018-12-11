@@ -1,0 +1,27 @@
+
+% 0. Initialization
+close all, clear, clc
+
+% Pick original image
+RGB = imread('C:\Users\60631005-0\Downloads\swan.jpg');
+I = rgb2gray(RGB);
+figure, imshow(I), title('Original image')
+
+% Convert the original image to binary
+Ibw = im2bw(I,graythresh(I));
+figure, imshow(Ibw), title('Binary image')
+
+% Find boundary of the image
+SE = strel('square',3);
+Ibw_erode = imerode(Ibw,SE);
+Ibound = abs(Ibw_erode - Ibw);
+figure, imshow(Ibound), title('Boundary image square')
+
+% Find boundary of the image
+SE = strel('diamond',1);
+Ibw_erode = imerode(Ibw,SE);
+Ibound = abs(Ibw_erode - Ibw);
+figure, imshow(Ibound), title('Boundary image square')
+
+Icanny = edge(Ibw,'canny'); 
+figure, imshow(Icanny), title('Canny Edge Image')

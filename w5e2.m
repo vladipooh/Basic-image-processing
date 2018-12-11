@@ -1,0 +1,17 @@
+
+% Example 5.2 Erosion
+% 0. Initialization
+close all, clear, clc
+% 1 Read the image into the MATLAB workspace.
+BW1 = imread('circbw.tif');
+% 2 Create a structuring element. (a diagonal structuring element object)
+SE = strel('arbitrary',eye(5));
+SE_square3 = strel('square',3)
+
+% 3 Erode the image with the defined structuring element.
+BW2 = imerode(BW1,SE);
+imshow(BW1), title('original')
+figure, imshow(BW2), title ('eroded image by diagnal se')
+
+BW2_square3 = imerode(BW1,SE_square3);
+figure, imshow(BW2_square3), title ('eroded image by sq of 3 se')

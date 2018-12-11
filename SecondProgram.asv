@@ -1,0 +1,22 @@
+% Img binalization
+
+% read img, find threshold, convert to binary, show img
+
+% initial
+clear
+close all 
+clc
+
+I = imread('coins.png');
+
+% show original img
+figure, imshow(I), title('original img')
+
+% show histogram of I
+figure, imhist(I), title('histogram of I')
+
+% manually specify global thrashold value
+threshold = 100;
+
+% convert to binary
+IBW1 = im2bw(I,th
